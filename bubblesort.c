@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
-void main(){
+int main(){
     int i, j;
     int array[] = {1,3,5,6,2,4,9,45,321,1}; 
     int temp;
@@ -23,4 +24,11 @@ void main(){
     for(j=0;j<(tamanho);j++){
         printf("%d ",array[j]);
     }
+    clock_t Ticks[2];
+    Ticks[0] = clock();
+    Ticks[1] = clock();
+    double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+    printf("\nTempo gasto: %g ms.", Tempo);
+    getchar();
+    return 0;
   }
