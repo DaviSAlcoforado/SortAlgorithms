@@ -20,7 +20,7 @@ int main(){
                 {
                  menor = j;//Armazenar o menor número
                }
-                 if (array[i] != array[menor]){//Se o array[i] não for o menor número, troca
+                 if (array[i] > array[menor]){//Se o array[i] não for o menor número, troca
                  temp = array[i];//Armazena a que não é menor em uma auxiliar
                  array[i] = array[menor];//O valor na posição I vira o menor
                  array[menor] = temp;//A auxiliar é o menor número
