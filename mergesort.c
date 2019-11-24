@@ -11,27 +11,28 @@ void merge (int parray[], int i, int meio, int f){
 	int a,b,c;
 	//tamanho esquerda e direita
 	int esq = meio - i + 1;
-	int dir = f  - meio;
+	int dir = f - meio;
 	//arrays auxiliares
 	int esqd[esq], dirt[dir];
 	
 	//para colocar os valores nos arrays auxiliares
-	for(a = 0; a <= esq; a++){
+	for(a = 0; a < esq; a++){
 		esqd[a] = parray[i + a];
 	}
-	for(b = 0; b <= dir; b++){
+	for(b = 0; b < dir; b++){
 		dirt[b] = parray[meio + 1 + b];
 	}
 
 	a = 0;
 	b = 0;
-	c = esq;
+	c = i;
 
-	while (a <= esq && b <= dir){
-		if (esqd[a] < dirt[b]){
+	while (a < esq && b < dir){
+		
+		if (esqd[a] <= dirt[b]){
 			parray[c] = esqd[a];
 			a++;
-			}
+		}
 			
 		else{
 			parray[c] = dirt[b];
@@ -54,7 +55,8 @@ void merge (int parray[], int i, int meio, int f){
 void mergesort(int parray[], int i, int f){
 	
 	if(i < f){
-		int meio = i +(f - i)/2;
+		int meio; 
+		meio = i +(f - i)/2;
 	
 		mergesort(parray,i,meio);
 
@@ -64,32 +66,26 @@ void mergesort(int parray[], int i, int f){
 	}	
 
 }
-//void print(int parray[], int n){
-//	for(int i = 0; i < n; i++){
-//		printf("%d ",parray[i]);
-//	}
-//}
+void print(int parray[], int n){
+	for(int i = 0; i < n; i++){
+		printf("%d ",parray[i]);
+	}
+}
 
 int main (){
  	clock_t Ticks[2];
     Ticks[0] = clock();
 
 	int parray[] = {3,1,8,4,5,6};
-	int n=  sizeof(parray)/sizeof(int);
-	int k;
+	int n=  sizeof(parray)/sizeof(parray[0]);
 
-	mergesort(parray, 0, n - 1);
-	//print(parray, n);
-	for(k =0; k < n;k++){
-		printf("%d ",parray[k]);
-	}
+	mergesort(parray, 0, n-1);
+	print(parray, n);
+
 	
-
-    	Ticks[1] = clock();
+    Ticks[1] = clock();
    	double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
-    	printf("\nTempo gasto: %g ms.", Tempo);
+    printf("\nTempo gasto: %g ms.", Tempo);
    
    	return 0;
-
-
 }
