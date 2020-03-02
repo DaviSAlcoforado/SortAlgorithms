@@ -25,3 +25,4 @@ int main ()
     printf("Maior soma: %d",maior_soma);
     return 0;
 }
+//Entrada de exemplo: -1 -1 -1 -1 4 9 5 4 3 2 1 
