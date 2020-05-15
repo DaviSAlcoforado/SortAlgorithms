@@ -50,6 +50,5 @@ int main(int argc, char *argv[]){
     Ticks[1] = clock();
     double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
     printf("\nTempo gasto: %g ms.", Tempo);
-    getchar();
     return 0;
 }
