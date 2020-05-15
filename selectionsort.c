@@ -3,13 +3,27 @@
 #include <string.h>
 #include <time.h>
 
-int main(){
+int main(int argc, char *argv[]){
     clock_t Ticks[2];
     Ticks[0] = clock();
     //começa contagem
 
-    int i, j; // para varrer
-    int array[] = {1,3,5,6,2,4,9,45,321,1}; //array definido (editável)
+    int i, j;
+    FILE *ptr;
+    ptr = fopen(argv[1],"r");
+    int cont = 0;
+    int test = 0;
+    while (!feof(ptr)) {
+            fscanf(ptr,"%d",&test);
+            cont++;
+    }
+    rewind(ptr);
+    int array[cont];
+    cont = 0;
+        while (!feof(ptr)) {
+            fscanf(ptr,"%d",&array[cont]);
+            cont++;
+    }
     int temp, menor; //variável auxiliar e variável para armazenar o menor número
     int tamanho = sizeof(array)/sizeof(int); //variável do tamanho do array
      for (i=0; i<(tamanho);i++)//laço for para checar o menor número
