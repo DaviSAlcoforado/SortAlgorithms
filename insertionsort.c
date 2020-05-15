@@ -3,23 +3,37 @@
 #include <string.h>
 #include <time.h>
 
-int main(){
+int main(int argc, char *argv[]){
     clock_t Ticks[2];
     Ticks[0] = clock();
 
     int i, j;
-    int array[] = {15,84,75,21,36,47,95,32,14,20,1,3,2,8,4,6};
+    FILE *ptr;
+    ptr = fopen(argv[1],"r");
+    int cont = 0;
+    int test = 0;
+    while (!feof(ptr)) {
+            fscanf(ptr,"%d",&test);
+            cont++;
+    }
+    rewind(ptr);
+    int array[cont];
+    cont = 0;
+        while (!feof(ptr)) {
+            fscanf(ptr,"%d",&array[cont]);
+            cont++;
+    }
+
+
     int temp;
     int tamanho = sizeof(array)/sizeof(int);
-
-     for (i=0; i<(tamanho);i++)
+     for (i=1; i<(tamanho);i++)
      {
-        for (j = 1; j<(tamanho); j++){
+        for (j = i; j>0; j--){
                  if (array[j] < array[j-1]){
                    temp = array[j];
                    array[j] = array[j-1];
                    array[j-1] = temp;
-                 
                 }
                 }
               }
@@ -31,6 +45,5 @@ int main(){
     Ticks[1] = clock();
     double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
     printf("\nTempo gasto: %g ms.", Tempo);
-    getchar();
     return 0;
 }
