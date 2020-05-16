@@ -72,13 +72,26 @@ void print(int parray[], int n){
 	}
 }
 
-int main (){
- 	clock_t Ticks[2];
-    Ticks[0] = clock();
-
-	int parray[] = {3,1,8,4,5,6};
+int main (int argc, char *argv[]){
+        clock_t Ticks[2];
+        Ticks[0] = clock();
+        int i, j;
+        FILE *ptr;
+        ptr = fopen(argv[1],"r");
+        int cont = 0;
+        int test = 0;
+        while (!feof(ptr)) {
+                fscanf(ptr,"%d",&test);
+                cont++;
+    }
+        rewind(ptr);
+        int parray[cont];
+        cont = 0;
+        while (!feof(ptr)) {
+                fscanf(ptr,"%d",&parray[cont]);
+                cont++;
+        } 
 	int n=  sizeof(parray)/sizeof(parray[0]);
-
 	mergesort(parray, 0, n-1);
 	print(parray, n);
 
