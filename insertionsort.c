@@ -25,20 +25,17 @@ int main(int argc, char *argv[]){
     }
 
 
-    int temp;
+    int inserido = 0;
     int tamanho = sizeof(array)/sizeof(int);
-     for (i=1; i<(tamanho);i++)
-     {
-        for (j = i; j>0; j--){
-                 if (array[j] < array[j-1]){
-                   temp = array[j];
-                   array[j] = array[j-1];
-                   array[j-1] = temp;
-                }
-                }
-              }
+     for (i=1; i<(tamanho);i++) {
+        inserido = array[i];
+        for (j = (i-1); j>=0 && array[j] > inserido; j--) {
+            array[j+1] = array[j];
+        }
+        array[j+1] = inserido;
+     }
 
-    for(j=0;j<(tamanho);j++){
+    for(j=0;j<(tamanho)-1;j++){
         printf("%d ",array[j]);
     }
 
