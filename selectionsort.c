@@ -4,9 +4,6 @@
 #include <time.h>
 
 int main(int argc, char *argv[]){
-    clock_t Ticks[2];
-    Ticks[0] = clock();
-    //começa contagem
 
     int i, j;
     FILE *ptr;
@@ -26,6 +23,9 @@ int main(int argc, char *argv[]){
     }
     int temp, menor; //variável auxiliar e variável para armazenar o menor número
     int tamanho = sizeof(array)/sizeof(int); //variável do tamanho do array
+    clock_t Ticks[2];
+    Ticks[0] = clock();
+    //começa contagem
      for (i=0; i<(tamanho);i++)//laço for para checar o menor número
      {
         menor = i;//Armazenar o menor número
@@ -41,14 +41,13 @@ int main(int argc, char *argv[]){
                 }
               }
                      }
-
-
-    for(i=0;i<(tamanho);i++){//Laço for para printar
-        printf("%d ",array[i]);
-    }
-
     Ticks[1] = clock();
     double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+
+
+    for(i=0;i<(tamanho)-1;i++){//Laço for para printar
+        printf("%d ",array[i]);
+    }
     printf("\nTempo gasto: %g ms.", Tempo);
     return 0;
 }
