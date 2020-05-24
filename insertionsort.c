@@ -4,8 +4,6 @@
 #include <time.h>
 
 int main(int argc, char *argv[]){
-    clock_t Ticks[2];
-    Ticks[0] = clock();
 
     int i, j;
     FILE *ptr;
@@ -27,6 +25,8 @@ int main(int argc, char *argv[]){
 
     int inserido = 0;
     int tamanho = sizeof(array)/sizeof(int);
+    clock_t Ticks[2];
+    Ticks[0] = clock();
      for (i=1; i<(tamanho);i++) {
         inserido = array[i];
         for (j = (i-1); j>=0 && array[j] > inserido; j--) {
@@ -34,13 +34,12 @@ int main(int argc, char *argv[]){
         }
         array[j+1] = inserido;
      }
-
+    Ticks[1] = clock();
+    double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
     for(j=0;j<(tamanho)-1;j++){
         printf("%d ",array[j]);
     }
 
-    Ticks[1] = clock();
-    double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
     printf("\nTempo gasto: %g ms.", Tempo);
     return 0;
 }
